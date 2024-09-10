@@ -5,13 +5,15 @@ const segundo_apellido = document.getElementById('segundo-apellido');
 const currentDate = document.getElementById('fecha');
 const currentTime = document.getElementById('hora');
 
+const server = "http://192.168.1.173:3000"
+
 function onObtenerTexto(event) {
     const ahora = new Date();
     // currentDate.innerHTML = currentTime.innerHTML = ahora.toLocaleDateString("es-ES");
     currentDate.innerHTML = ahora.toLocaleDateString("es-ES");
     currentTime.innerHTML = ahora.toLocaleTimeString("es-ES");
     
-    fetch('http://localhost:3000/texto')
+    fetch(`${server}/texto`)
         .then(response => response.json())
         .then(data => {
             nombre.textContent = data.nombre;
@@ -23,4 +25,24 @@ function onObtenerTexto(event) {
         });
 }
 
+function guardarDatos(event, currentDate) {
+    fetch(`${server}/guardar-fecha`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ currentDate })
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        // Mostrar un mensaje al usuario indicando si se guardaron los datos correctamente
+    })
+    .catch(error => {
+        console.error(error);
+    });
+    
+}
+
 obtenerTextoBoton.addEventListener('click', onObtenerTexto);
+obtenerTextoBoton.addEventListener('click', guardarDatos);
