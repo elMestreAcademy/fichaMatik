@@ -10,7 +10,7 @@
 
     section Prioritarias
     Introducir info en la base de datos            :done,    a1, 2024-09-06, 2024-09-10
-    Conectando información a base de datos               :active,  a2, after a1 2024-09-10, 2024-09-11
+    Conect.información a base de datos            :active,  a2, 2024-09-10, 2024-09-11
     Fichaje             :active, a3, after a2 2024-09-06, 2024-09-20
     Recuperar datos de la base de datos(1) :done, a4, 2024-09-06, 2024-09-10
     Crear insert fecha en SQL  : active, 2024-09-10, 2024-09-11
