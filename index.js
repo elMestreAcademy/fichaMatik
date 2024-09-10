@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
 
 // Ruta para obtener la cadena de texto
 app.get('/texto', (req, res) => {
-    connection.query('SELECT nombre FROM usuario WHERE usuario_id = 1', (error, results) => {
+    connection.query('SELECT nombre, primer_apellido, segundo_apellido FROM usuario WHERE usuario_id = 1', (error, results) => {
         if (error) throw error;
         res.json(results[0]);
     });

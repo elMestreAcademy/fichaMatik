@@ -1,5 +1,7 @@
 const obtenerTextoBoton = document.getElementById('obtenerTextoBoton');
-const resultadoDiv = document.getElementById('resultado');
+const nombre = document.getElementById('nombre');
+const primer_apellido = document.getElementById('primer-apellido');
+const segundo_apellido = document.getElementById('segundo-apellido');
 const currentDate = document.getElementById('fecha');
 const currentTime = document.getElementById('hora');
 
@@ -12,7 +14,9 @@ function onObtenerTexto(event) {
     fetch('http://localhost:3000/texto')
         .then(response => response.json())
         .then(data => {
-            resultadoDiv.textContent = data.nombre;
+            nombre.textContent = data.nombre;
+            primer_apellido.textContent = data.primer_apellido;
+            segundo_apellido.textContent = data.segundo_apellido;
         })
         .catch(error => {
             console.error('Error:', error);
