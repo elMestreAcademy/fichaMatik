@@ -5,7 +5,7 @@ const segundo_apellido = document.getElementById('segundo-apellido');
 const currentDate = document.getElementById('fecha');
 const currentTime = document.getElementById('hora');
 
-const server = "http://192.168.1.173:3000"
+const server = "http://localhost:3000"
 
 function onObtenerTexto(event) {
     const ahora = new Date();

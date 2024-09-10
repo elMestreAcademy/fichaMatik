@@ -2,7 +2,8 @@ const mysql = require("mysql");
 
 // Configuración de la conexión a MySQL
 const conexion = mysql.createConnection({
-  host: '192.168.1.224',
+  host: 'masterfactories.com',
+  port: 8192,
   user: 'Muscardina',
   password: 'krono',
   database: 'fichamatik'
