@@ -7,13 +7,25 @@ const currentTime = document.getElementById('hora');
 
 const server = "http://localhost:3000"
 
-function onObtenerTexto(event) {
+function showCurrendatetime() { 
     const ahora = new Date();
     // currentDate.innerHTML = currentTime.innerHTML = ahora.toLocaleDateString("es-ES");
     currentDate.innerHTML = ahora.toLocaleDateString("es-ES");
     currentTime.innerHTML = ahora.toLocaleTimeString("es-ES");
+}
+
+function onObtenerTexto(event) {
+    showCurrendatetime()
     
-    fetch(`${server}/texto`)
+    fetch(`${server}/texto`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({usuario_id: 1})
+        }        
+    )
         .then(response => response.json())
         .then(data => {
             nombre.textContent = data.nombre;
@@ -25,13 +37,15 @@ function onObtenerTexto(event) {
         });
 }
 
-function guardarDatos(event, currentDate) {
-    fetch(`${server}/guardar-fecha`, {
+function guardarDatos(event) {
+    showCurrendatetime()
+
+    fetch(`${server}/fichar`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ currentDate })
+        body: JSON.stringify({usuario_id: 1})
     })
     .then(response => response.text())
     .then(data => {
@@ -41,8 +55,8 @@ function guardarDatos(event, currentDate) {
     .catch(error => {
         console.error(error);
     });
-    
 }
+
 
 obtenerTextoBoton.addEventListener('click', onObtenerTexto);
 obtenerTextoBoton.addEventListener('click', guardarDatos);

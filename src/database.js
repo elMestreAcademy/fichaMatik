@@ -17,21 +17,20 @@ conexion.connect(function (err) {
   console.log('Conectado a la base de datos');
 })
 
-function texto(callback) {
-  const query = 'SELECT nombre, primer_apellido, segundo_apellido FROM usuario WHERE usuario_id = 1'
-
-  conexion.query(query, function (err, result) {
-    if (err) {
-      throw err;
-    };
-    callback(result)
-  })
+function texto(usuario_id, callback) {
+  conexion.query(
+    'SELECT nombre, primer_apellido, segundo_apellido FROM usuario WHERE usuario_id = (?)', [usuario_id],
+    function (err, result) {
+      if (err) {
+        throw err;
+      };
+      callback(result)
+    })
 }
 
-function guardarFecha(currentDate, callback) {
+function guardarFecha(usuario_id, callback) {
   conexion.query(
-    'INSERT INTO fichaje(usuario_id, fecha) VALUES (1, ?)', [currentDate],
-    // callback(err, result),
+    'INSERT INTO fichaje(usuario_id) VALUES (?)', [usuario_id],
     function (err, result) {
       if (err) {
         throw err;
