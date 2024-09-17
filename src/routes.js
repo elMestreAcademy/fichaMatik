@@ -23,4 +23,29 @@ module.exports = app => {
             res.send('Datos guardados correctamente');
         })
     });
+
+    app.post('/salida', (req, res) => {
+        const {usuario_id} = req.body;
+
+        console.log("GUARDAR SALIDA DE USER :" + usuario_id)
+        ddbb.salida(usuario_id, (results) => {
+            res.redirect('/buen-dia');
+        })
+    });   
+
+    app.get('/buen-dia', (req,res) => {
+        res.send('mariposa')
+    })
 }
+//  segun el diagrama de flujo esta funcion podria ayudarnos en el update (salida)
+
+   // 
+   //function salida(req, res, callback) {
+    // if (usuario_id) {
+       // callback ();
+    // } else {
+       // req.salida = 'sin acceso!';
+        // res.redirect('/login');
+    //  }
+// }
+

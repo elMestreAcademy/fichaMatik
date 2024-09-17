@@ -39,7 +39,20 @@ function guardarFecha(usuario_id, callback) {
     })
 }
 
+function salida(usuario_id, callback) {
+  const query = 'SELECT * FROM fichamatik.fichaje WHERE usuario_id= (?) and salida is null' 
+  conexion.query(query,[usuario_id], function (err, result) {
+    if (err) {
+      throw err;
+    };
+    callback(result)
+  })
+}
+
+
 module.exports = {
   texto,
-  guardarFecha
+  guardarFecha,
+  salida
+
 };

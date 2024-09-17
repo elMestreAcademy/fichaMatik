@@ -4,10 +4,11 @@ const primer_apellido = document.getElementById('primer-apellido');
 const segundo_apellido = document.getElementById('segundo-apellido');
 const currentDate = document.getElementById('fecha');
 const currentTime = document.getElementById('hora');
+const salida = document.getElementById('salida');
 
 const server = "http://localhost:3000"
 
-function showCurrendatetime() { 
+function showCurrendatetime() {
     const ahora = new Date();
     // currentDate.innerHTML = currentTime.innerHTML = ahora.toLocaleDateString("es-ES");
     currentDate.innerHTML = ahora.toLocaleDateString("es-ES");
@@ -16,15 +17,15 @@ function showCurrendatetime() {
 
 function onObtenerTexto(event) {
     showCurrendatetime()
-    
+
     fetch(`${server}/texto`,
         {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({usuario_id: 1})
-        }        
+            body: JSON.stringify({ usuario_id: 1 })
+        }
     )
         .then(response => response.json())
         .then(data => {
@@ -45,18 +46,41 @@ function guardarDatos(event) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({usuario_id: 1})
+        body: JSON.stringify({ usuario_id: 1 })
     })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        // Mostrar un mensaje al usuario indicando si se guardaron los datos correctamente
-    })
-    .catch(error => {
-        console.error(error);
-    });
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            // Mostrar un mensaje al usuario indicando si se guardaron los datos correctamente
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
+
+function onSalida(event) {
+    showCurrendatetime()
+
+    fetch(`${server}/salida`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ usuario_id: 1 })
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            // Mostrar un mensaje al usuario indicando si se guardaron los datos correctamente
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
 
 
 obtenerTextoBoton.addEventListener('click', onObtenerTexto);
 obtenerTextoBoton.addEventListener('click', guardarDatos);
+obtenerTextoBoton.addEventListener('click', onSalida);
+
