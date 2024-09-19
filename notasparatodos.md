@@ -6,7 +6,9 @@
     
     -Si con el "mysql install" no te funciona bien, prueba entonces "mysql2 install".
 
-    -Si queremos cambiar el servidor para que funciones en diferentes redes, entraremos en /
+    -Si queremos cambiar el servidor para que funciones en diferentes redes, entraremos en /main.js y en const server http://192.168.1.1 servidor de localhost.
+    
+
 
 ## Panel de anuncios y comentarios ##
 
