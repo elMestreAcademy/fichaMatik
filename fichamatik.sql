@@ -25,11 +25,10 @@ DROP TABLE IF EXISTS `fichaje`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fichaje` (
-  `fichaje_id` int NOT NULL,
+  `fichaje_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `usuario_id` int NOT NULL,
-  `entrada` datetime DEFAULT NULL,
-  `salida` datetime DEFAULT NULL,
-  PRIMARY KEY (`fichaje_id`,`usuario_id`),
+  `entrada` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `salida` TIMESTAMP DEFAULT NULL,
   KEY `fk_fichaje_usuario_idx` (`usuario_id`),
   CONSTRAINT `fk_fichaje_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usuario_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -52,12 +51,11 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
-  `usuario_id` int NOT NULL,
+  `usuario_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   `primer_apellido` varchar(45) DEFAULT NULL,
   `segundo_apellido` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`usuario_id`)
+  `password` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -67,7 +65,8 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Hermes','Ordozgoiti','Arevalo','krono');
+INSERT INTO `usuario` VALUES (NULL,'Hermes','Ordozgoiti','Arevalo','krono');
+INSERT INTO `usuario` VALUES (NULL,'Jesus','Jaramillo','Mora','krono');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

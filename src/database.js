@@ -2,57 +2,79 @@ const mysql = require("mysql");
 
 // Configuración de la conexión a MySQL
 const conexion = mysql.createConnection({
-  host: 'masterfactories.com',
+  host: "masterfactories.com",
   port: 8192,
-  user: 'Muscardina',
-  password: 'krono',
-  database: 'fichamatik'
+  user: "Muscardina",
+  password: "krono",
+  database: "fichamatik",
 });
 
 conexion.connect(function (err) {
   if (err) {
-    console.error('Error conectando a la base de datos:', err.stack);
+    console.error("Error conectando a la base de datos:", err.stack);
     return;
   }
-  console.log('Conectado a la base de datos');
-})
+  console.log("Conectado a la base de datos");
+});
 
-function texto(usuario_id, callback) {
+function buscarEmpleado(usuario_id, callback) {
   conexion.query(
-    'SELECT nombre, primer_apellido, segundo_apellido FROM usuario WHERE usuario_id = (?)', [usuario_id],
+    `SELECT
+      nombre, primer_apellido, segundo_apellido, fichaje_id, entrada
+    FROM usuario
+    LEFT JOIN fichaje ON usuario.usuario_id = fichaje.usuario_id AND fichaje.salida IS NULL
+    WHERE 1
+    AND usuario.usuario_id = (?) LIMIT 1`,
+    [usuario_id],
     function (err, result) {
       if (err) {
         throw err;
-      };
-      callback(result)
-    })
+      }
+      callback(result);
+    }
+  );
 }
 
 function guardarFecha(usuario_id, callback) {
   conexion.query(
-    'INSERT INTO fichaje(usuario_id) VALUES (?)', [usuario_id],
+    "INSERT INTO fichaje(usuario_id, entrada) VALUES (?, NOW())",
+    [usuario_id],
     function (err, result) {
       if (err) {
         throw err;
-      };
-      callback(result)
-    })
+      }
+      callback(result);
+    }
+  );
 }
 
-function salida(usuario_id, callback) {
-  const query = 'SELECT * FROM fichamatik.fichaje WHERE usuario_id= (?) and salida is null' 
-  conexion.query(query,[usuario_id], function (err, result) {
-    if (err) {
-      throw err;
-    };
-    callback(result)
-  })
+function cerrarFichaje(usuario_id, callback) {
+  conexion.query(
+    "UPDATE fichaje SET salida = NOW() WHERE usuario_id = ? AND salida IS NULL",
+    [usuario_id],
+    function (err, result) {
+      if (err) {
+        throw err;
+      }
+      callback(result);
+    }
+  );
 }
 
+// function salida(usuario_id, callback) {
+//   const query = 'SELECT * FROM fichamatik.fichaje WHERE usuario_id= (?) and salida is null'
+//   conexion.query(query,[usuario_id], function (err, result) {
+//     if (err) {
+//       throw err;
+//     };
+//     callback(result)
+//   })
+// }
 
 module.exports = {
-  texto,
+  //texto,
   guardarFecha,
-  salida
-
+  // salida,
+  buscarEmpleado,
+  cerrarFichaje,
 };

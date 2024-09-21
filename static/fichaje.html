@@ -8,14 +8,15 @@
   </head>
 
   <body>
-    <input
-      type="text"
-      id="usuario_id"
-      name="usuario_id"
-      placeholder="Ingresa el codigo del usuario"
-    />
-    <input type="button" value="Consultar" id="obtenerTextoBoton" />
-    <div id="resultado"></div>
+    <form action="http://localhost:3000/usuario/consultar" method="post">
+      <input
+        type="text"
+        id="usuario_id"
+        name="usuario_id"
+        placeholder="Ingresa el codigo del usuario"
+      />
+      <input type="submit" value="Consultar" />
+    </form>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
