@@ -13,3 +13,5 @@
 ## Panel de anuncios y comentarios ##
 
     Muscardina--> Aquí podéis incluir comentarios, preguntas y peticiones que queréis uqe todo el mundo pueda leer, así nos comunicaremos de forma más ordenada. Incluid vuestro nombre si lo hacéis, porfa.
+
+    Muscardina--> Jesus ha subido a la rama lab2 una alternativa que si ficha de salida, aunque un poco raro. Cabe la posibbilidad de intentar hacer una mezcla tomando las partes que nos interesan.
