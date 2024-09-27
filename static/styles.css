@@ -17,7 +17,7 @@ body {
 /* Cuadrado flotante blanco al centro */
 form,
 #resultado {
-    background-color: white;
+    background-color: antiquewhite;
     border-radius: 10px;
     padding: 40px;
     width: 400px;
@@ -26,9 +26,19 @@ form,
     margin-top: 20px;
 }
 
+form,
+#usuario_id {
+    background-color: antiquewhite;
+}
+
+
+form, 
+input {
+    width: 100%;
+}
+
 /* Estilo del input de texto */
 input[type="text"] {
-    width: 100%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
@@ -54,7 +64,14 @@ input[type="button"]:hover,
 input[type="submit"]:hover,
 button:hover {
     background-color: #d25e00;
-}div, 
+}
+
+#time {
+    color: antiquewhite;
+    font-size: 3rem;
+}
+
+div, 
 #main-wrapper {
     display: flex;
     justify-content: center;
