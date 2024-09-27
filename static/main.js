@@ -56,7 +56,7 @@ function entrada() {
     .then((data) => {
       const resultadoDiv = document.getElementById("resultado");
       resultadoDiv.innerHTML = `
-          <div>El usuario a ingresado correctamente</div>
+          <div>El usuario ha ingresado correctamente</div>
         `;
     })
     .catch((error) => {
