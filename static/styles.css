@@ -54,4 +54,9 @@ input[type="button"]:hover,
 input[type="submit"]:hover,
 button:hover {
     background-color: #d25e00;
+}div, 
+#main-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
