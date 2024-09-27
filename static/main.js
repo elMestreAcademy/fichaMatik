@@ -20,10 +20,9 @@ function onObtenerTexto(event) {
     .then((data) => {
       const resultadoDiv = document.getElementById("resultado");
       resultadoDiv.innerHTML = `
-        <div>${
-          data.fichaje_id
-            ? data.nombre + " " + data.primer_apellido + " " + data.segundo_apellido + " ha ingresado a las " + data.entrada + ". ¿Desea salir?"
-            : "EL usuario no tiene un fichaje activo. ¿Desea entrar?"
+        <div>${data.fichaje_id
+          ? data.nombre + " " + data.primer_apellido + " " + data.segundo_apellido + " ha ingresado a las " + data.entrada + ". ¿Desea salir?"
+          : "EL usuario no tiene un fichaje activo. ¿Desea entrar?"
         }</div>
         <button id='fichaje'>${data.fichaje_id ? "Salir" : "Fichar"}</button>
       `;
@@ -57,7 +56,7 @@ function entrada() {
     .then((data) => {
       const resultadoDiv = document.getElementById("resultado");
       resultadoDiv.innerHTML = `
-          <div>El usuario a ingresado correctametne</div>
+          <div>El usuario a ingresado correctamente</div>
         `;
     })
     .catch((error) => {

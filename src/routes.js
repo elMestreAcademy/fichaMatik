@@ -32,7 +32,7 @@ module.exports = (app) => {
       ddbb.guardarFecha(usuario_id, (results) => {
         res.send({
           success: true,
-          mensaje: "Se registro la entrada corretametne",
+          mensaje: "Se registro la entrada correctamente",
         });
       });
     }

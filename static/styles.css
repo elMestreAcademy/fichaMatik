@@ -1,0 +1,57 @@
+/* Estilo general */
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url('fondo.png') no-repeat center center;
+    /* Imagen de fondo */
+    background-size: cover
+}
+
+/* Cuadrado flotante blanco al centro */
+form,
+#resultado {
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+}
+
+/* Estilo del input de texto */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Estilo de los botones */
+input[type="button"],
+input[type="submit"],
+button {
+    background-color: #333;
+    color: rgb(240, 231, 231);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+button:hover {
+    background-color: #d25e00;
+}
