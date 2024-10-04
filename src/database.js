@@ -1,12 +1,13 @@
+require('dotenv').config()
 const mysql = require("mysql2");
 
 // Configuración de la conexión a MySQL
 const conexion = mysql.createConnection({
-  host: "masterfactories.com",
-  port: 8192,
-  user: "Muscardina",
-  password: "krono",
-  database: "fichamatik",
+  host: process.env.HOST,
+  port: process.env.SQL_PORT,
+  user: process.env.USER,
+  password: process.env.PASS,
+  database: process.env.DDBB,
 });
 
 conexion.connect(function (err) {
